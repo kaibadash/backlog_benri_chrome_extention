@@ -33,13 +33,12 @@ class ObstaclePagesSkipper {
 }
 
 // TODO: move to ...
-class ElementAdder {
+class CopyURLButtonManager {
     private imgURL: string = chrome.extension.getURL("images/link.png");
     private idText: string = "backlog-benri-text-for-clipboard";
        
     exec() {
         this.createDom();
-            
     }
     
     private needToExec() : Boolean {
@@ -48,25 +47,15 @@ class ElementAdder {
     
     private createDom() : JQuery {
         var parent: JQuery = $("#copyKey-help").parent();  
-        var text: JQuery = $('<input type="text" id="' + this.idText + '" value="' + location.href + '" />');
         var button: JQuery = $('<input type="image" src="' + this.imgURL + '" width="20px" height="20px" />');
-        // text.width(1);
-        // text.height(1);  texttexttexttexttexttexttexttext
         button.click(() => {
-            console.log("aaaaaaaaaaaa");
-            parent.append(text);
-            text.select();
-            document.execCommand("copy");
-            setTimeout(() => { text.hide(); });
+            chrome.runtime.sendMessage({text: location.href});
         });
-        
         parent.append(button);
         return parent;
     }
 }
 
-
-
 new CommentExpander().exec();
 new ObstaclePagesSkipper().exec();
-new ElementAdder().exec();
+new CopyURLButtonManager().exec();
