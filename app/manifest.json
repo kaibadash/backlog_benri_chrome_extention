@@ -21,7 +21,8 @@
     "tabs",
     "https://*.backlog.jp/*",
     "background",
-    "clipboardWrite"
+    "clipboardWrite",
+    "contextMenus"
   ],
   "options_ui": {
     "page": "options.html",
