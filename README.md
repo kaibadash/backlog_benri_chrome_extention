@@ -1,5 +1,7 @@
 # backlog_benri_chrome_extention
-Chrome extention for better backlog
+Chrome extention for better backlog.
+
+![screenshot](https://raw.githubusercontent.com/kaibadash/backlog_benri_chrome_extention/master/doc/README_ss01.png)
 
 backlogをより便利に使えるように以下の機能を追加します。
 - チケットのURLをコピーするボタンを追加
