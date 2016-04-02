@@ -2,6 +2,7 @@
 "use strict";
 
 // TODO: move to CommentExpander.ts
+// コメント展開リンクを開く
 class CommentExpander {
     exec() {
         $(() => {
@@ -20,6 +21,7 @@ class CommentExpander {
 }
 
 // TODO: move to ...
+// 「追加しました」をスキップする
 class ObstaclePagesSkipper {
     exec() {
         $("#issuecompletion .inner a").each(function(){
@@ -33,6 +35,7 @@ class ObstaclePagesSkipper {
 }
 
 // TODO: move to ...
+// URLをコピーするボタンを追加する
 class CopyURLButtonManager {
     private imgURL: string = chrome.extension.getURL("images/link.png");
     private idText: string = "backlog-benri-text-for-clipboard";

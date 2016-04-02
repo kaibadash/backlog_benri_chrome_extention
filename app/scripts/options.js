@@ -2,6 +2,7 @@
 var Settings = (function () {
     function Settings() {
         this.settings = {};
+        this.loadSettings();
     }
     Settings.prototype.saveSettings = function () {
         settings[Settings.KEY_TEAM_ID] = $("#" + Settings.KEY_TEAM_ID).val();
@@ -19,9 +20,5 @@ var Settings = (function () {
 }());
 var settings = new Settings();
 $(function () {
-    settings.loadSettings();
     $("#" + Settings.KEY_SAVE).click(settings.saveSettings);
 });
-function saveSettings() {
-    settings.saveSettings();
-}

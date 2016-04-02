@@ -5,6 +5,13 @@ chrome.runtime.onInstalled.addListener(details => {
     // TODO:設定がなければ設定させる
 });
 
+// TODO: キー、設定、クラスの共通化
+var KEY_TEAM_ID: string = "backlog_benri_team_name";
+var teamUrl: string = "";
+chrome.storage.sync.get(KEY_TEAM_ID, (v) => {
+    teamUrl = v[KEY_TEAM_ID]; 
+});
+
 chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
         saveToClipboard(request.text);
@@ -14,8 +21,13 @@ chrome.runtime.onMessage.addListener(
 // TODO:果たしてこの型はわかりやすいのか？
 var openBacklogTicketFunc:(info, tab) => void = (info, tab) => {
     var matched: string[] = info.selectionText.match(/([A-Z]+\-[0-9]+)/);
-    if (matched.length < 2) return; // 全体と後方参照で2    
-    chrome.tabs.create({url: "https://pixta.backlog.jp/view/" + matched[1]});
+    if (matched.length < 2) return; // 全体と後方参照で2
+    if (teamUrl.length == 0) {
+        alert("Please set backlog team ID");
+        chrome.tabs.create({url: "TODO:setting page"});
+        return;    
+    }
+    chrome.tabs.create({url: "https://"+ teamUrl + ".backlog.jp/view/" + matched[1]});
 };
 
 var parentContextMenuID = chrome.contextMenus.create({
