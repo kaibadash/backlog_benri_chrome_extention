@@ -24,7 +24,7 @@ var openBacklogTicketFunc:(info, tab) => void = (info, tab) => {
     if (matched.length < 2) return; // 全体と後方参照で2
     if (teamUrl.length == 0) {
         alert("Please set backlog team ID");
-        chrome.tabs.create({url: "TODO:setting page"});
+        chrome.tabs.create({url: chrome.extension.getURL("options.html")});
         return;    
     }
     chrome.tabs.create({url: "https://"+ teamUrl + ".backlog.jp/view/" + matched[1]});

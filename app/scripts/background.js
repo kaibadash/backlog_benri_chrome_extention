@@ -15,7 +15,7 @@ var openBacklogTicketFunc = function (info, tab) {
         return;
     if (teamUrl.length == 0) {
         alert("Please set backlog team ID");
-        chrome.tabs.create({ url: "TODO:setting page" });
+        chrome.tabs.create({ url: chrome.extension.getURL("options.html") });
         return;
     }
     chrome.tabs.create({ url: "https://" + teamUrl + ".backlog.jp/view/" + matched[1] });
