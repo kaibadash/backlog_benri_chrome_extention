@@ -4,10 +4,18 @@
 class CommentExpander {
     fireExpandAll() {
         $(() => {
+            if (!this.needToExec()) {
+                return;
+            }
             $("#expandAll").each(function(){
                 this.click();
             });
         });
+    }
+    
+    // lazy
+    private needToExec() : Boolean {
+        return location.href.lastIndexOf("/.backlog.jp/view/") > 0;
     }
 }
 
