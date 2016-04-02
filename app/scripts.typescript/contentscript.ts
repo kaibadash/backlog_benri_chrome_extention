@@ -19,9 +19,9 @@ class CommentExpander {
     }
 }
 
+// TODO: move to ...
 class ObstaclePagesSkipper {
     exec() {
-        console.log($("#issuecompletion .inner a").html());
         $("#issuecompletion .inner a").each(function(){
             this.click();
         });
@@ -32,5 +32,41 @@ class ObstaclePagesSkipper {
     }
 }
 
+// TODO: move to ...
+class ElementAdder {
+    private imgURL: string = chrome.extension.getURL("images/link.png");
+    private idText: string = "backlog-benri-text-for-clipboard";
+       
+    exec() {
+        this.createDom();
+            
+    }
+    
+    private needToExec() : Boolean {
+        return location.href.lastIndexOf(".backlog.jp/view/") > 0;
+    }
+    
+    private createDom() : JQuery {
+        var parent: JQuery = $("#copyKey-help").parent();  
+        var text: JQuery = $('<input type="text" id="' + this.idText + '" value="' + location.href + '" />');
+        var button: JQuery = $('<input type="image" src="' + this.imgURL + '" width="20px" height="20px" />');
+        // text.width(1);
+        // text.height(1);  texttexttexttexttexttexttexttext
+        button.click(() => {
+            console.log("aaaaaaaaaaaa");
+            parent.append(text);
+            text.select();
+            document.execCommand("copy");
+            setTimeout(() => { text.hide(); });
+        });
+        
+        parent.append(button);
+        return parent;
+    }
+}
+
+
+
 new CommentExpander().exec();
 new ObstaclePagesSkipper().exec();
+new ElementAdder().exec();
