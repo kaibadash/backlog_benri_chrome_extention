@@ -1,6 +1,7 @@
 {
   "name": "backlog_benri",
-  "version": "0.0.5",
+  "short_name" : "backlog_benri",
+  "version": "0.0.6",
   "manifest_version": 2,
   "description": "Add convenient(Benri in Japanese) functins for backlog",
   "icons": {
@@ -24,7 +25,7 @@
     "background",
     "clipboardWrite",
     "contextMenus",
-    "storage"    
+    "storage"
   ],
   "options_ui": {
     "page": "options.html",
