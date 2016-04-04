@@ -14,3 +14,16 @@ backlogをより便利に使えるように以下の機能を追加します。
 
 # Application privacy policy
  This application does not collect or publish any personal information.
+
+# How to develop
+
+- Install npm(node.js)
+- gulp install -g gulp
+
+```sh
+git clone git@github.com:kaibadash/backlog_benri_chrome_extention.git
+cd backlog_benri_chrome_extention
+npm install
+bower install
+gulp build
+```
