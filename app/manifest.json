@@ -1,7 +1,7 @@
 {
   "name": "backlog_benri",
   "short_name" : "backlog_benri",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "manifest_version": 2,
   "description": "Add convenient(Benri in Japanese) functions for backlog",
   "icons": {
