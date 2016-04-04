@@ -9,7 +9,7 @@ chrome.runtime.onInstalled.addListener(details => {
 var KEY_TEAM_ID: string = "backlog_benri_team_name";
 var teamUrl: string = "";
 chrome.storage.sync.get(KEY_TEAM_ID, (v) => {
-    teamUrl = v[KEY_TEAM_ID]; 
+    teamUrl = v[KEY_TEAM_ID] || "";
 });
 
 chrome.runtime.onMessage.addListener(
@@ -25,7 +25,7 @@ var openBacklogTicketFunc:(info, tab) => void = (info, tab) => {
     if (teamUrl.length == 0) {
         alert("Please set backlog team ID");
         chrome.tabs.create({url: chrome.extension.getURL("options.html")});
-        return;    
+        return;
     }
     chrome.tabs.create({url: "https://"+ teamUrl + ".backlog.jp/view/" + matched[1]});
 };
