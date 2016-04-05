@@ -3,14 +3,11 @@ var CommentExpander = (function () {
     function CommentExpander() {
     }
     CommentExpander.prototype.exec = function () {
-        var _this = this;
-        $(function () {
-            if (!_this.needToExec()) {
-                return;
-            }
-            $("#expandAll").each(function () {
-                this.click();
-            });
+        if (!this.needToExec()) {
+            return;
+        }
+        $("#expandAll").each(function () {
+            this.click();
         });
     };
     CommentExpander.prototype.needToExec = function () {
@@ -53,6 +50,8 @@ var CopyURLButtonManager = (function () {
     };
     return CopyURLButtonManager;
 }());
-new CommentExpander().exec();
-new ObstaclePagesSkipper().exec();
-new CopyURLButtonManager().exec();
+$(document).ready(function () {
+    new CommentExpander().exec();
+    new ObstaclePagesSkipper().exec();
+    new CopyURLButtonManager().exec();
+});

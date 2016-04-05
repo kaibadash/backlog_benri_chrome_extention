@@ -4,7 +4,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 var KEY_TEAM_ID = "backlog_benri_team_name";
 var teamUrl = "";
 chrome.storage.sync.get(KEY_TEAM_ID, function (v) {
-    teamUrl = v[KEY_TEAM_ID];
+    teamUrl = v[KEY_TEAM_ID] || "";
 });
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     saveToClipboard(request.text);

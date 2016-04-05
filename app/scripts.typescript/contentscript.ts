@@ -5,13 +5,11 @@
 // コメント展開リンクを開く
 class CommentExpander {
     exec() {
-        $(() => {
-            if (!this.needToExec()) {
-                return;
-            }
-            $("#expandAll").each(function(){
-                this.click();
-            });
+        if (!this.needToExec()) {
+            return;
+        }
+        $("#expandAll").each(function(){
+            this.click();
         });
     }
     
@@ -59,6 +57,8 @@ class CopyURLButtonManager {
     }
 }
 
-new CommentExpander().exec();
-new ObstaclePagesSkipper().exec();
-new CopyURLButtonManager().exec();
+$(document).ready(() => {
+    new CommentExpander().exec();
+    new ObstaclePagesSkipper().exec();
+    new CopyURLButtonManager().exec();
+});
