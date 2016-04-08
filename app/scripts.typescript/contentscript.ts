@@ -9,7 +9,9 @@ class CommentExpander {
             return;
         }
         $("#expandAll").each(function(){
-            this.click();
+            setTimeout(() => {
+                this.click();
+            }, 100);
         });
     }
     
