@@ -4,7 +4,7 @@
 
 // コメント展開リンクをクリックして開いた状態にする
 class CommentExpander {
-    exec() {
+    run() {
         if (!this.needToExec()) {
             return;
         }

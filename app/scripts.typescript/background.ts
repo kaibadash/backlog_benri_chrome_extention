@@ -1,18 +1,18 @@
 /// <reference path="../../typings/main.d.ts" />
+/// <reference path="Settings.ts" />
 'use strict';
 
 chrome.runtime.onInstalled.addListener(details => {
-    // TODO:設定がなければ設定させる
-});
-
-// TODO: キー、設定、クラスの共通化
-var KEY_TEAM_ID: string = "backlog_benri_team_name";
-var teamUrl: string = "";
-chrome.storage.sync.get(KEY_TEAM_ID, (v) => {
-    teamUrl = v[KEY_TEAM_ID] || "";
+    new Settings((s: Settings) => {
+        if (s.getTeamUrl().length == 0) {
+            chrome.tabs.create({url: chrome.extension.getURL("options.html")});
+            return;
+        }    
+    });
 });
 
 chrome.runtime.onMessage.addListener(
+    // TODO:今はこのメッセージしかこないから良いけど、雑すぎる。
     (request, sender, sendResponse) => {
         saveToClipboard(request.text);
     }
@@ -22,12 +22,15 @@ chrome.runtime.onMessage.addListener(
 var openBacklogTicketFunc:(info, tab) => void = (info, tab) => {
     var matched: string[] = info.selectionText.match(/([A-Z]+\-[0-9]+)/);
     if (matched.length < 2) return; // 全体と後方参照で2
-    if (teamUrl.length == 0) {
-        alert("Please set backlog team ID");
-        chrome.tabs.create({url: chrome.extension.getURL("options.html")});
-        return;
-    }
-    chrome.tabs.create({url: "https://"+ teamUrl + ".backlog.jp/view/" + matched[1]});
+    new Settings((s: Settings) => {
+       var teamUrl: string = s.getTeamUrl();
+        if (teamUrl.length == 0) {
+            alert("Please set backlog team ID");
+            chrome.tabs.create({url: chrome.extension.getURL("options.html")});
+            return;
+        }
+        chrome.tabs.create({url: "https://"+ teamUrl + ".backlog.jp/view/" + matched[1]}); 
+    });
 };
 
 var parentContextMenuID = chrome.contextMenus.create({
