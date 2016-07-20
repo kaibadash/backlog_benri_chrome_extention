@@ -1,7 +1,7 @@
 {
   "name": "backlog_benri",
   "short_name" : "backlog_benri",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "manifest_version": 2,
   "description": "Add convenient(Benri in Japanese) functions for backlog",
   "icons": {
@@ -14,7 +14,6 @@
   "default_locale": "ja",
   "background": {
     "scripts": [
-      "scripts/chromereload.js",
       "scripts/background.js"
     ]
   },
