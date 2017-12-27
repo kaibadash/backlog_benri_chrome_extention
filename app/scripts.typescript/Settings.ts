@@ -4,7 +4,7 @@ class Settings {
     public static KEY_TEAM_ID: string = "backlog_benri_team_name";
     settings: any = {};
     
-    constructor(callback: (s:Settings) => void) {
+    constructor(callback: (s: Settings) => void) {
         this.loadSettings(callback);
     }
     
