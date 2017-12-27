@@ -17,15 +17,15 @@ class CopyURLButtonManager {
     }
 
     private createDom() : JQuery {
-        console.log("createDom aaaaa");
         var parent: JQuery = $("#copyKey-help");
         var button: JQuery = $('<input type="image" src="' + this.imgURL + '" width="20px" height="20px" />');
         button.click(() => {
             var url: String = location.href.split("#")[0];
-            chrome.runtime.sendMessage({text: url});
+            var title: String = $(".title-group__title-text").html();
+            var num: String = url.split("/")[4]
+            chrome.runtime.sendMessage({ text: `${num} ${title}\n${url}` });
             Toast.show("Copied!")
         });
-        console.log("createDom");
         parent.append(button);
         return parent;
     }
