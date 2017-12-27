@@ -8,11 +8,11 @@ class CommentExpander {
         if (!this.needToExec()) {
             return;
         }
-        $("#expandAll").each(function(){
-            setTimeout(() => {
-                this.click();
-            }, 100);
-        });
+        setTimeout(() => {
+            $(".comment-item.is_minimum").each(function(){
+                this.click();                
+            });
+        }, 500);
     }
 
     private needToExec() : Boolean {
