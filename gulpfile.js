@@ -7,10 +7,10 @@ var targetBackground = "app/scripts.typescript/background.ts";
 
 gulp.task("build", function(){
   gulp.src(targetCountentScript)
-    .pipe(typescript({ out: "contentscript.js", target: "ES5", removeComments: true, sortOutput: true }))
+    .pipe(typescript({ out: "contentscript.js", target: "ES5", removeComments: true }))
     .pipe(gulp.dest("app/scripts/"));
   gulp.src(targetBackground)
-    .pipe(typescript({ out: "background.js", target: "ES5", removeComments: true, sortOutput: true }))
+    .pipe(typescript({ out: "background.js", target: "ES5", removeComments: true }))
     .pipe(gulp.dest("app/scripts/"));
 });
 

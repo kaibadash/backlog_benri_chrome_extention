@@ -2,7 +2,7 @@
 /// <reference path="Settings.ts" />
 'use strict';
 
-var settings: Settings = new Settings();
+var settings: Settings = new Settings(null);
 
 $(() => {
     $("#" + Settings.KEY_TEAM_ID).val(settings.getTeamUrl());
