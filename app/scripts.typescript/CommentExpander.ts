@@ -9,9 +9,11 @@ class CommentExpander {
             return;
         }
         setTimeout(() => {
+            $("body").css("overflow", "hidden");
             $(".comment-item.is_minimum").each(function(){
                 this.click();                
             });
+            $("body").css("overflow", "visible");
         }, 500);
     }
 
