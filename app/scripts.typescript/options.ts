@@ -6,5 +6,8 @@ var settings: Settings = new Settings(null);
 
 $(() => {
     $("#" + Settings.KEY_TEAM_ID).val(settings.getTeamUrl());
-    $("#" + Settings.KEY_SAVE).click(settings.saveSettings);
+    $("#" + Settings.KEY_TEMPLATE).val(settings.getTemplate());
+    $("#" + Settings.KEY_SAVE).click(
+        (event: MouseEvent) => { settings.saveSettings(); }
+    );
 });
