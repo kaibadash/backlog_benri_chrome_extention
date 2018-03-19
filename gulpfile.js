@@ -4,8 +4,12 @@ var concat = require("gulp-concat");
 
 var targetCountentScript = "app/scripts.typescript/contentscript.ts";
 var targetBackground = "app/scripts.typescript/background.ts";
+var targetOptions = "app/scripts.typescript/options.ts";
 
 gulp.task("build", function(){
+  gulp.src(targetOptions)
+    .pipe(typescript({ out: "options.js", target: "ES5", removeComments: true }))
+    .pipe(gulp.dest("app/scripts/"));
   gulp.src(targetCountentScript)
     .pipe(typescript({ out: "contentscript.js", target: "ES5", removeComments: true }))
     .pipe(gulp.dest("app/scripts/"));
