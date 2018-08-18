@@ -2,16 +2,15 @@
   "name": "backlog-benri",
   "private": true,
   "dependencies": {
-    "gulp-zip": "^3.2.0",
-    "jquery": "^2.2.2"
+    "gulp-zip": "^4.2.0",
+    "jquery": "^3.3.1"
   },
   "devDependencies": {
-    "bower": "",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
+    "bower": "*",
+    "gulp": "*",
+    "gulp-concat": "*",
     "gulp-typescript": "*",
-    "typescript": "^1.8.5",
-    "typings": "^0.7.11"
+    "typescript": "^3.0.1"
   },
   "engines": {
     "node": ">=0.8.0"
